@@ -15,6 +15,7 @@ package ipamd
 
 import (
 	"encoding/json"
+	"fmt"
 	"net"
 	"os"
 	"os/signal"
@@ -59,6 +60,7 @@ type PodENIData struct {
 
 // AddNetwork processes CNI add network request and return an IP address for container
 func (s *server) AddNetwork(ctx context.Context, in *rpc.AddNetworkRequest) (*rpc.AddNetworkReply, error) {
+	fmt.Fprintf(os.Stderr, "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ\n")
 	log.Infof("Received AddNetwork for NS %s, Sandbox %s, ifname %s",
 		in.Netns, in.ContainerID, in.IfName)
 	log.Debugf("AddNetworkRequest: %s", in)
